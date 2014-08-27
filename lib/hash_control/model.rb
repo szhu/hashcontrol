@@ -20,6 +20,10 @@ module HashControl
       @symbolized_hash.select { |key, _| keys.include? key.to_sym }
     end
 
+    def [](name)
+      @hash[name]
+    end
+
     private
 
     def validate_default
@@ -59,10 +63,6 @@ module HashControl
           define_method(name) { @hash[name] }
         end
       end
-    end
-
-    def [](name)
-      @hash[name]
     end
 
     def self.included(base)

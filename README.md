@@ -20,23 +20,23 @@ Want just a single-use validator? Use `HashControl::Validator`.
  ```ruby
 require 'hash_control'
 class Comment
- include ::HashControl::Model
- require_key :author, :body, :date
- permit_key :image
+  include ::HashControl::Model
+  require_key :author, :body, :date
+  permit_key :image
 end
 
 require 'hash_control'
 class Something
- include ::HashControl::Model
- require_key :id
- permit_all_keys
+  include ::HashControl::Model
+  require_key :id
+  permit_all_keys
 end
 
 Comment.new(author: 'me', body: 'interesting stuff', date: Time.now)
 
 Comment.new(body: "this ain't gonna fly")
-# ArgumentError: required params [:author, :date] missing
-#   in {:body=>"this ain't gonna fly"}
+# ArgumentError: extra params [:extra]
+#   in {:body=>"this ain't gonna fly", :author=>"me", :date=>2014-01-01 00:00:00 -0000, :extra=>"hullo"}
 
 Something.new(body: "this, however, will")
 # ArgumentError: required params [:id] missing
