@@ -1,4 +1,4 @@
-GEM_NAME := hashcontrol
+GEM_NAME := hash_control
 
 all:
 	gem build $(GEM_NAME).gemspec
