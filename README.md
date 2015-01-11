@@ -89,3 +89,10 @@ end
 CustomValidator.new(get_request).validate_get_request
 CustomValidator.new(post_request).validate_post_request
 ```
+
+## Credit
+
+**HashControl** was originally designed and written by [@szhu] at [@IFTTT].
+
+[@szhu]: https://github.com/szhu
+[@IFTTT]: https://github.com/IFTTT
