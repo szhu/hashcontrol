@@ -10,6 +10,6 @@ uninstall:
 	gem uninstall $(GEM_NAME)
 
 clean:
-	rm $(GEM_NAME)-*.gem
+	rm -fv -- $(GEM_NAME)-*.gem
 
 .PHONY: all install clean
