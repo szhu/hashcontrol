@@ -3,6 +3,10 @@
 [![Build Status](https://travis-ci.org/szhu/hashcontrol.svg?branch=master)](https://travis-ci.org/szhu/hashcontrol)
 [![Code Climate](https://codeclimate.com/github/szhu/hashcontrol/badges/gpa.svg)](https://codeclimate.com/github/szhu/hashcontrol)
 
+```shell
+gem install hash_control
+```
+
 This Ruby library provides some conveniences for using and manipulating hash-like data.
 
 ## Features
@@ -84,12 +88,4 @@ end
 
 CustomValidator.new(get_request).validate_get_request
 CustomValidator.new(post_request).validate_post_request
-```
-
-## Installing
-
-Copy the library to the destination of your choice and use `require_relative`, or simply:
-
-```shell
-make install
 ```
