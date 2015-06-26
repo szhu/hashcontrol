@@ -8,7 +8,7 @@ Gem::Specification.new do |gem|
     END
 
   gem.version       = ::HashControl::VERSION
-  gem.date          = '2014-08-22'
+  gem.date          = '2015-06-26'
 
   gem.homepage      = 'https://github.com/szhu/hashcontrol'
   gem.authors       = ['Sean Zhu']
