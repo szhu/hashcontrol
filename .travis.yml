@@ -3,5 +3,10 @@ script: rspec
 rvm:
   - 1.9.3
   - 2.0.0
-  - 2.1.0
+  - 2.1.6
+  - 2.2.2
   - ruby-head
+matrix:
+  allow_failures:
+    - rvm: ruby-head
+  fast_finish: true
