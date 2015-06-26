@@ -61,6 +61,10 @@ describe HashControl::Model do
           expect(@comment[:nonexistent]).to eq(nil)
         end
       end
+
+      it "#slice should work" do
+        expect(@comment.slice(:author, :body).keys.to_set).to eq([:author, :body].to_set)
+      end
     end
 
     describe "that permits all keys" do
@@ -89,6 +93,10 @@ describe HashControl::Model do
           expect(@something['nonexistent']).to eq(nil)
           expect(@something[:nonexistent]).to eq(nil)
         end
+      end
+
+      it "#slice should work" do
+        expect(@something.slice(:body).keys.to_set).to eq([:body].to_set)
       end
     end
   end

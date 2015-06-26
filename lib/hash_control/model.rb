@@ -17,7 +17,7 @@ module HashControl
     end
 
     def slice(*keys)
-      @symbolized_hash.select { |key, _| keys.include? key.to_sym }
+      symbolized_hash.select { |key, _| keys.include? key.to_sym }
     end
 
     def [](name)
