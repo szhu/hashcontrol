@@ -13,6 +13,26 @@ describe HashControl::Model do
       require_key :id
       permit_all_keys
     end
+
+    # This class is used to test for the bug from 0.1.2. #require_key and
+    # #permit_key are supposed to make a reader method iff the key does not
+    # conflict with an instance method, not a class method.
+    #
+    # Below, :name and :superclass are class-only methods (reader method
+    # should be made), while :symbolized_hash and :slice are instance-only
+    # methods (reader method should not be made).
+    class MethodConflictTest
+      include ::HashControl::Model
+      require_key :name, :symbolized_hash
+      permit_key :superclass, :slice
+    end
+
+    @method_conflict_test = MethodConflictTest.new(
+      name: 'value of :name',
+      symbolized_hash: 'value of :symbolized_hash',
+      superclass: 'value of :superclass',
+      slice: 'value of :slice'
+    )
   end
 
   describe "making an instance should error if it" do
@@ -48,6 +68,16 @@ describe HashControl::Model do
         end
         it "not other keys" do
           expect { @comment.nonexistent }.to raise_error(NoMethodError)
+        end
+        it "even keys that conflict with class methods" do
+          expect(@method_conflict_test.name).to eq('value of :name')
+          expect(@method_conflict_test.superclass).to eq('value of :superclass')
+        end
+        it "not keys that conflict with instance methods" do
+          # If these methods were unintentionally overwritten (as they were in
+          # 0.1.2), then they would return Strings.
+          expect(@method_conflict_test.symbolized_hash).to be_a Hash
+          expect(@method_conflict_test.slice).to be_a Hash
         end
       end
 

@@ -58,7 +58,7 @@ module HashControl
 
       def key_accessor(name)
         name = name.to_sym
-        return if self.respond_to?(name)
+        return if self.method_defined?(name)
         class_eval do
           define_method(name) { @hash[name] }
         end
@@ -78,7 +78,7 @@ module HashControl
     module ClassMethods
       def key_accessor(name)
         name = name.to_sym
-        return if self.respond_to?(name)
+        return if self.method_defined?(name)
         class_eval do
           define_method(name) { @hash[name] }
           define_method("#{name}=") { |x| @hash[name] = x }
