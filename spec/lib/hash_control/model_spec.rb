@@ -47,7 +47,7 @@ describe HashControl::Model do
           expect(@comment.image).to eq(nil)
         end
         it "not other keys" do
-          expect{@comment.nonexistent}.to raise_error(NoMethodError)
+          expect { @comment.nonexistent }.to raise_error(NoMethodError)
         end
       end
 
@@ -61,7 +61,6 @@ describe HashControl::Model do
           expect(@comment[:nonexistent]).to eq(nil)
         end
       end
-
     end
 
     describe "that permits all keys" do
@@ -74,12 +73,12 @@ describe HashControl::Model do
           expect(@something.id).to eq(1)
         end
         it "not implicitly-permitted keys" do
-          expect{@something.body}.to raise_error(NoMethodError)
-          expect{@something.nonexistent}.to raise_error(NoMethodError)
+          expect { @something.body }.to raise_error(NoMethodError)
+          expect { @something.nonexistent }.to raise_error(NoMethodError)
         end
         it "not other keys" do
-          expect{@something.body}.to raise_error(NoMethodError)
-          expect{@something.nonexistent}.to raise_error(NoMethodError)
+          expect { @something.body }.to raise_error(NoMethodError)
+          expect { @something.nonexistent }.to raise_error(NoMethodError)
         end
       end
 
